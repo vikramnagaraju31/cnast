@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: condenast
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: condenast-deployment
+  namespace: condenast
+  labels:
+    app: condenast
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: condenast
+  template:
+    metadata:
+      labels:
+        app: condenast
+    spec:
+      containers:
+      - name: condenast
+        image: replace_image
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: condenast-svc
+  namespace: condenast
+spec:
+  selector:
+    app: condenast
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+  type: LoadBalancer
