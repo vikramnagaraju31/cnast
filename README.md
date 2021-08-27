@@ -1,3 +1,5 @@
+#Design: images/GitHubWorkFlow.png 
+
 #Steps to reproduce
 - git clone https://github.com/vikramnagaraju31/cnast.git -b develop
 - Create your own repo on github
@@ -24,3 +26,11 @@
 - Go to Services -> CloudWatch -> Log groups -> Click on desired log group with cluster name -> Click on desired log stream with deployment name to view logs
 - Create own cloud watch dashboard for metrics and log groups using cloud watch query.
 
+#Tools
+Repo: Git Hub
+CICD: Github Workflow
+Buil: Maven
+Containerization: Docker 
+Image Registry: Docker Registry
+Orchestration: AWS EKS
+IAAC: Terraform
