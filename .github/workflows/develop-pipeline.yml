@@ -31,9 +31,6 @@ jobs:
     - name: Terraform Plan
       id: plan
       run: terraform plan
-    - name: Terraform Apply
-      id: apply
-      run: terraform apply -auto-approve
     - name: Build Hello World Artifact
       run: mvn -B package --file pom.xml
     - name: Build Hello World Image
@@ -45,7 +42,7 @@ jobs:
       run:  |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
         docker push ${{secrets.DOCKER_USER}}/helloworld:${{github.run_number}}
-        sed -i'' -e 's/replace_image/${{secrets.DOCKER_USER}}/helloworld:${{github.run_number}}/g' Deployment.yml
+        sed -i'' -e 's/replace_image/${{secrets.DOCKER_USER}}\/helloworld:${{github.run_number}}/g' Deployment.yml
     - name: Deploy On EKS Cluster
       uses: ianbelcher/eks-kubectl-action@master
       with:
