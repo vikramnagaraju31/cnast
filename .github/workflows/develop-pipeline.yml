@@ -31,6 +31,9 @@ jobs:
     - name: Terraform Plan
       id: plan
       run: terraform plan
+    - name: Terraform Apply
+      id: apply
+      run: terraform apply -auto-approve
     - name: Build Hello World Artifact
       run: mvn -B package --file pom.xml
     - name: Build Hello World Image
